@@ -20,7 +20,7 @@ public class JpaEmployee implements Serializable {
     private String employeeName;
 
     @Basic(optional = false)
-    @Column(name = "employee_email")
+    @Column(name = "employee_email",unique = true)
     private String employeeEmail;
 
     @Basic(optional = false)

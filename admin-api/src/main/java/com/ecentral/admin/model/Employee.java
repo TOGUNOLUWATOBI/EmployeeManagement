@@ -1,5 +1,7 @@
 package com.ecentral.admin.model;
 
+import play.data.validation.Constraints;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import java.util.Date;
@@ -7,6 +9,7 @@ import java.util.Date;
 public class Employee {
     private String employeeId;
     private String employeeName;
+    @Constraints.Email
     private String employeeEmail;
     private String employeePassword;
     private Date dateJoined;

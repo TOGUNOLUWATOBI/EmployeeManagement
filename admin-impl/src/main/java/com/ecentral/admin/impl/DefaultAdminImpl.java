@@ -9,10 +9,7 @@ import play.db.jpa.JPAApi;
 
 import javax.inject.Inject;
 import javax.persistence.TypedQuery;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import static java.util.Optional.ofNullable;
 
@@ -46,6 +43,8 @@ public class DefaultAdminImpl implements IAdmin {
     public Employee addEmployee(Employee employee) {
         JpaEmployee jpaEmployee = EmployeeMapper.employeeToJpaEmployee(employee );
         jpaEmployee.setEmployeeId(UUID.randomUUID().toString());
+        Random random = new Random();
+        jpaEmployee.setEmployeePassword(String.format("%04d", random.nextInt(10000)));
         jpaApi.em().persist(jpaEmployee);
         return EmployeeMapper.jpaEmployeeToEmployee(jpaEmployee);
     }
